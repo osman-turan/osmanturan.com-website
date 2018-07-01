@@ -1,0 +1,49 @@
+{
+    "name": "osmanturan.com-website",
+    "version": "1.0.0",
+    "description": "Website for osmanturan.com",
+    "main": "index.js",
+    "scripts": {
+        "clean": "node ./build.js --clean",
+        "build": "cross-env NODE_ENV=production node ./build.js --build",
+        "rebuild": "npm run clean && npm run build",
+        "dev": "node ./dev-server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/osman-turan/osmanturan.com-website.git"
+    },
+    "author": "Osman Turan",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/osman-turan/osmanturan.com-website/issues"
+    },
+    "homepage": "https://github.com/osman-turan/osmanturan.com-website#readme",
+    "dependencies": {
+        "@types/jquery": "^3.3.4",
+        "@types/react": "^16.4.6",
+        "@types/react-dom": "^16.0.6",
+        "bootstrap": "^4.1.1",
+        "react": "^16.4.1",
+        "react-dom": "^16.4.1"
+    },
+    "devDependencies": {
+        "connect": "^3.6.6",
+        "cross-env": "^5.2.0",
+        "css-loader": "^0.28.11",
+        "fs-extra": "^6.0.1",
+        "mini-css-extract-plugin": "^0.4.1",
+        "minimist": "^1.2.0",
+        "mustache": "^2.3.0",
+        "node-sass": "^4.9.0",
+        "optimize-css-assets-webpack-plugin": "^4.0.3",
+        "sass-loader": "^7.0.3",
+        "serve-static": "^1.13.2",
+        "style-loader": "^0.21.0",
+        "ts-loader": "^4.4.2",
+        "typescript": "^2.9.2",
+        "uglifyjs-webpack-plugin": "^1.2.7",
+        "webpack": "^4.14.0",
+        "webpack-cli": "^3.0.8"
+    }
+}
