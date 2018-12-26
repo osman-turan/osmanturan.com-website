@@ -253,8 +253,7 @@ async function compileStyleAsync(entry, bundleName) {
 
 async function copyStaticFilesAsync() {
     const promiseArray = [
-        copyAsync("./src/html/index.html", "./bin/index.html"),
-        copyAsync("./src/images/", "./bin/assets/images/")
+        copyAsync("./src/static/", "./bin/")
     ];
 
     await Promise.all(promiseArray);
