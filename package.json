@@ -5,9 +5,13 @@
     "main": "index.js",
     "scripts": {
         "clean": "node ./build.js --clean",
-        "build": "cross-env NODE_ENV=production node ./build.js --build",
+        "build-assets": "cross-env NODE_ENV=production node ./build.js --build-assets",
+        "build-hugo": "cross-env HUGO_ENV=production node build.js --build-hugo",
+        "watch-hugo": "./tools/hugo/hugo server --source ./site -D -F --disableFastRender",
+        "build": "cross-env NODE_ENV=production HUGO_ENV=production node build.js --build-assets --build-hugo",
         "rebuild": "npm run clean && npm run build",
-        "dev": "node ./dev-server.js"
+        "dev": "node ./dev-server.js",
+        "setup": "node build.js --setup"
     },
     "repository": {
         "type": "git",
@@ -28,14 +32,15 @@
         "react-dom": "^16.4.1"
     },
     "devDependencies": {
+        "bin-wrapper": "^4.1.0",
+        "compression": "^1.7.3",
         "connect": "^3.6.6",
         "cross-env": "^5.2.0",
         "css-loader": "^0.28.11",
         "fs-extra": "^6.0.1",
         "mini-css-extract-plugin": "^0.4.1",
         "minimist": "^1.2.0",
-        "mustache": "^2.3.0",
-        "node-sass": "^4.9.0",
+        "node-sass": "^4.11.0",
         "optimize-css-assets-webpack-plugin": "^4.0.3",
         "sass-loader": "^7.0.3",
         "serve-static": "^1.13.2",
