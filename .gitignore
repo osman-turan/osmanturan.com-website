@@ -116,3 +116,7 @@ typings/
 
 # Custom ignore list
 bin/
+site/assets/
+site/resources/_gen/
+site/static/
+tools/

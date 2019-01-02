@@ -1,0 +1,58 @@
+{{- define "main" -}}
+
+<header>
+
+</header>
+
+<div class="profile">
+    <div class="avatar">
+    </div>
+    <div class="bio">
+        <h1>Osman Turan</h1>
+        <p>Software Developer, Electrical-Electronics Engineer</p>
+    </div>
+</div>
+<section>
+    <h2>About</h2>
+    {{ $deltaHelloDate := sub now.Year 1996 }}
+    <p>Coding over {{ $deltaHelloDate }} years since age 11. Full stack developer with engineering background with thorough hands-on experience
+        from low-level kernel programming to single-page web applications, socket-level networking to computer generated
+        graphics, desktop applications to distributed systems with help of Agile methodologies and full lifecycle management.
+        Enjoys automating some mundane tasks - including playing video games! Loves to optimize his algorithms with Genetic
+        Algorithms. Reverse-engineering is his last trump card for undocumented behaviors and APIs.</p>
+</section>
+<section>
+    <h2>Contact</h2>
+    <ul class="contact-channels">
+        <li>
+            <a href="https://twitter.com/theosmanturan" target="_blank">
+                <i class="icon-twitter"></i>Twitter</a>
+        </li>
+        <li>
+            <a href="https://github.com/osman-turan" target="_blank">
+                <i class="icon-github"></i>GitHub</a>
+        </li>
+        <li>
+            <a href="https://codepen.io/osmanturan" target="_blank">
+                <i class="icon-codepen"></i>Codepen</a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/in/osman-turan-360043a8/" target="_blank">
+                <i class="icon-linkedin"></i>Linkedin</a>
+        </li>
+        <li>
+            <a href="https://www.instagram.com/theosmanturan/" target="_blank">
+                <i class="icon-instagram"></i>Instagram</a>
+        </li>
+        <li>
+            <a href="https://stackoverflow.com/users/1113866/osman-turan" target="_blank">
+                <i class="icon-stackoverflow"></i>Stack Overflow</a>
+        </li>
+        <li>
+            <a href="https://www.hackerrank.com/osmanturan" target="_blank">
+                <i class="icon-hackerrank"></i>HackerRank</a>
+        </li>
+    </ul>
+</section>
+
+{{- end -}}
