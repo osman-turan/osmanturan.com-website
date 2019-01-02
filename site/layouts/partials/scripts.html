@@ -1,0 +1,3 @@
+{{ $mainScriptResource := resources.Get "assets/js/main.js" }}
+{{ $mainScriptResourcePath := ($mainScriptResource | resources.Fingerprint "md5").RelPermalink }}
+<script src="{{ $mainScriptResourcePath }}"></script>
