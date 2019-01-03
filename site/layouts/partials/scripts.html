@@ -1,3 +1,25 @@
+{{ $polyfillsScriptResource := resources.Get "assets/js/polyfills.js" }}
+{{ $polyfillsScriptResourcePath := ($polyfillsScriptResource | resources.Fingerprint "md5").RelPermalink }}
 {{ $mainScriptResource := resources.Get "assets/js/main.js" }}
 {{ $mainScriptResourcePath := ($mainScriptResource | resources.Fingerprint "md5").RelPermalink }}
-<script src="{{ $mainScriptResourcePath }}"></script>
+<script>
+  (function () {
+    var a = ["{{ $mainScriptResourcePath }}"];
+
+    var m =
+      "Promise" in window &&
+      "assign" in Object &&
+      "keys" in Object;
+
+    if (!m) {
+      a.unshift("{{ $polyfillsScriptResourcePath }}");
+    }
+
+    a.forEach(function(s) {
+      var e = document.createElement("script");
+      e.src = s;
+      e.async = false;
+      document.head.appendChild(e);
+    });
+  }());
+</script>

@@ -283,9 +283,14 @@ async function buildAsync() {
   }
 
   if (isBuildFlagSet("build-assets")) {
-    await copyStaticFilesAsync();
-    await compileTypeScriptAsync("./src/ts/main.tsx", "main");
-    await compileStyleAsync("./src/scss/main.scss", "main");
+    const tasks = [
+      copyStaticFilesAsync(),
+      compileTypeScriptAsync("./src/ts/polyfills.ts", "polyfills"),
+      compileTypeScriptAsync("./src/ts/main.tsx", "main"),
+      compileStyleAsync("./src/scss/main.scss", "main")
+    ];
+
+    await Promise.all(tasks);
   }
 
   if (isBuildFlagSet("build-hugo")) {
