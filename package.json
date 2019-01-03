@@ -24,12 +24,9 @@
     },
     "homepage": "https://github.com/osman-turan/osmanturan.com-website#readme",
     "dependencies": {
-        "@types/jquery": "^3.3.29",
-        "@types/react": "^16.7.18",
-        "@types/react-dom": "^16.0.11",
+        "@babel/polyfill": "^7.2.5",
         "bootstrap": "^4.2.1",
-        "react": "^16.7.0",
-        "react-dom": "^16.7.0"
+        "preact": "^8.4.2"
     },
     "devDependencies": {
         "bin-wrapper": "^4.1.0",
