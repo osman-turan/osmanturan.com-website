@@ -1,11 +1,14 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { h, render, Component } from "preact";
+import { ComponentService } from "./component-service";
 
 function notifyDomLoaded(): void {
-    console.log(`Finished: ${performance.now().toFixed(1)}ms`);
+  ComponentService.initializeComponents();
+  console.log(`Finished: ${performance.now().toFixed(1)}ms`);
 }
 
 // Wait until DOM fully ready.
-document.addEventListener("DOMContentLoaded", (domEvent: any) => {
-    notifyDomLoaded();
-});
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", notifyDomLoaded);
+} else {
+  notifyDomLoaded();
+}
