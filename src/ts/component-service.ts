@@ -1,4 +1,4 @@
-import { h, render, Component } from "preact";
+import { h, render } from "preact";
 import { ComponentFactory } from "./component-factory";
 import { Dictionary } from "./core/collections";
 import { $ } from "./dom-query";
