@@ -24,28 +24,28 @@
     },
     "homepage": "https://github.com/osman-turan/osmanturan.com-website#readme",
     "dependencies": {
-        "@babel/polyfill": "^7.2.5",
-        "bootstrap": "^4.2.1",
-        "preact": "^8.4.2"
+        "@babel/polyfill": "^7.8.3",
+        "bootstrap": "^4.4.1",
+        "preact": "^10.3.1"
     },
     "devDependencies": {
         "bin-wrapper": "^4.1.0",
-        "compression": "^1.7.3",
-        "connect": "^3.6.6",
-        "cross-env": "^5.2.0",
-        "css-loader": "^2.1.0",
-        "fs-extra": "^7.0.1",
-        "mini-css-extract-plugin": "^0.5.0",
+        "compression": "^1.7.4",
+        "connect": "^3.7.0",
+        "cross-env": "^7.0.0",
+        "css-loader": "^3.4.2",
+        "fs-extra": "^8.1.0",
+        "mini-css-extract-plugin": "^0.9.0",
         "minimist": "^1.2.0",
-        "node-sass": "^4.11.0",
-        "optimize-css-assets-webpack-plugin": "^5.0.1",
-        "sass-loader": "^7.1.0",
-        "serve-static": "^1.13.2",
-        "style-loader": "^0.23.1",
-        "ts-loader": "^5.3.2",
-        "typescript": "^3.2.2",
-        "uglifyjs-webpack-plugin": "^2.1.1",
-        "webpack": "^4.28.3",
-        "webpack-cli": "^3.1.2"
+        "node-sass": "^4.13.1",
+        "optimize-css-assets-webpack-plugin": "^5.0.3",
+        "sass-loader": "^8.0.2",
+        "serve-static": "^1.14.1",
+        "style-loader": "^1.1.3",
+        "ts-loader": "^6.2.1",
+        "typescript": "^3.7.5",
+        "uglifyjs-webpack-plugin": "^2.2.0",
+        "webpack": "^4.41.6",
+        "webpack-cli": "^3.3.11"
     }
 }
