@@ -1,4 +1,4 @@
-import { h, render, Component } from "preact";
+import { h } from "preact";
 import { ComponentService } from "./component-service";
 
 function notifyDomLoaded(): void {

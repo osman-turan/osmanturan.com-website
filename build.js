@@ -12,7 +12,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const argv = require("minimist")(process.argv.slice(2));
 
 const HUGO_LOCAL_PATH = "tools/hugo";
-const HUGO_LOCAL_VERSION = 0.53;
+const HUGO_LOCAL_VERSION = "0.64.1";
 
 function isBuildFlagSet(flag) {
   return argv && argv[flag];
