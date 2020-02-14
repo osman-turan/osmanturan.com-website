@@ -3,3 +3,6 @@ languageCode = "en-us"
 title = "Osman Turan"
 googleAnalytics = "UA-121649569-1"
 disableKinds = ["taxonomy", "taxonomyTerm"]
+
+[params]
+preconnects = ["https://www.google-analytics.com"]

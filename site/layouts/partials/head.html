@@ -7,5 +7,6 @@
   {{ with .Site.Params.description }}
   <meta name="description" content="{{ . }}" />
   {{ end }}
+  {{ partial "preconnects.html" . }}
   {{ partial "styles.html" . }}
 </head>
