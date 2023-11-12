@@ -1,3 +1,0 @@
-{{ $styleResource := resources.Get "assets/css/main.css" }}
-{{ $styleResourcePath := ($styleResource | resources.Fingerprint "md5").RelPermalink }}
-<link rel="stylesheet" href="{{ $styleResourcePath }}" />

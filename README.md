@@ -2,96 +2,34 @@
 
 [![wercker status](https://app.wercker.com/status/6c4288f68ab606b409ead7303b951382/s/ "wercker status")](https://app.wercker.com/project/byKey/6c4288f68ab606b409ead7303b951382)
 
-Website for [osmanturan.com](https://osmanturan.com) which is built with [TypeScript](https://www.typescriptlang.org/) + [Webpack](https://webpack.js.org/) + [Hugo](https://gohugo.io/) and deployed with [Netlify](https://www.netlify.com/) + [Wercker](https://app.wercker.com/).
+Website for [osmanturan.com](https://osmanturan.com) which is built with [Next.js](https://nextjs.org/) and deployed with [Netlify](https://www.netlify.com/) + [Wercker](https://app.wercker.com/).
 
 ## Prerequisites
+
 - [Node.js](https://nodejs.org/)
-- [NPM](https://npmjs.com/)
-- [Hugo](https://gohugo.io/) (optional)
+- [Yarn](https://yarnpkg.com/)
 
-## Building
+## Getting Started
 
-Run following command in a directory to clone repository:
+Run the following command in a directory to clone the repository:
 
-```
-$ git clone https://github.com/osman-turan/osmanturan.com-website.git
-```
-
-After cloning the repository, run following command at the project root to install missing [NPM](https://npmjs.com/) packages:
-
-```
-$ npm install
+```bash
+git clone https://github.com/osman-turan/osmanturan.com-website.git
 ```
 
-If you don't have [Hugo](https://gohugo.io/) installed, you can download a local copy by running following command. Build script will automatically use local copy of [Hugo](https://gohugo.io/) when it's available:
+After cloning the repository, run the following command at the project root to install missing dependencies:
 
-```
-$ npm run setup
-```
-
-And finally, you can run following command to perform a full build:
-
-```
-$ npm run build
+```bash
+yarn install
 ```
 
-After a successful build, all of required files for deployment can be found in `bin` folder.
+And finally, run the development server:
 
-### Build Script Details
-Build script is written in [JavaScript](https://en.wikipedia.org/wiki/JavaScript) for [Node.js](https://nodejs.org/) environment.
-
-Usage:
-
-```
-$ node build.js <switches>
+```bash
+yarn dev
 ```
 
-Available switches:
-
-| Switch           | Description                                                                                                          |
-|------------------|----------------------------------------------------------------------------------------------------------------------|
-| `--setup`        | Initialize the project for building for the first time. Currently installs local copy of [Hugo](https://gohugo.io/). |
-| `--clean`        | Cleans all build directories.                                                                                        |
-| `--build-assets` | Builds assets (TypeScript, SCSS etc. files) and copies static files.                                                 |
-| `--build-hugo`   | Invokes [Hugo](https://gohugo.io/) build.                                                                            |
-
-There are 2 environment variables to enable production build. Otherwise development mode is used:
-
-| Environment Variable | Accepted Values | Description                                                                                                                   |
-|----------------------|-----------------|-------------------------------------------------------------------------------------------------------------------------------|
-| `NODE_ENV`           | `production`    | Enables production build for [Node.js](https://nodejs.org/) related build steps (such as [Webpack](https://webpack.js.org/)). |
-| `HUGO_ENV`           | `production`    | Enables production build for [Hugo](https://gohugo.io/) build step.                                                           |
-
-Example full build for development:
-
-```
-$ node build.js --setup --clean --build-assets --build-hugo
-```
-
-Example full build for production on Unix:
-
-```
-$ NODE_ENV=production HUGO_ENV=production node build.js --setup --clean --build-assets --build-hugo
-```
-
-Example full build for production on Windows:
-
-```
-$ set NODE_ENV=production && set HUGO_ENV=production && node build.js --setup --clean --build-assets --build-hugo
-```
-
-For fast iteration during development with multi-platform support, several commands were added to `scripts` section of `package.json`:
-
-| Command                | Description                                                                                                    |
-|------------------------|----------------------------------------------------------------------------------------------------------------|
-| `npm run clean`        | Cleans build directories.                                                                                      |
-| `npm run build-assets` | Builds assets for production.                                                                                  |
-| `npm run build-hugo`   | Builds site with [Hugo](https://gohugo.io/) for production.                                                    |
-| `npm run watch-hugo`   | Starts development mode with live reload by using local copy of [Hugo](https://gohugo.io/).                    |
-| `npm run build`        | Builds assets and site for production.                                                                         |
-| `npm run rebuild`      | Combination of `npm run clean` and `npm run build`.                                                            |
-| `npm run dev`          | Starts a [Node.js](https://nodejs.org/) web server on `bin` folder.                                            |
-| `npm run setup`        | Initializes build environment for the first time. Currently installs local copy of [Hugo](https://gohugo.io/). |
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the website.
 
 ## Deployment Environments
 

@@ -1,9 +1,0 @@
-baseURL = "https://osmanturan.com/"
-languageCode = "en-us"
-title = "Osman Turan"
-googleAnalytics = "UA-121649569-1"
-enableRobotsTXT = true
-disableKinds = ["taxonomy", "taxonomyTerm"]
-
-[params]
-preconnects = ["https://www.google-analytics.com"]

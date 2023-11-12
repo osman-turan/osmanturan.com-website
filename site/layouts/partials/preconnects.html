@@ -1,6 +1,0 @@
-{{ with .Site.Params.preconnects }}
-{{ range . }}
-  <link rel="preconnect" href="{{ . }}" />
-  <link rel="dns-prefetch" href="{{ . }}" />
-{{ end }}
-{{ end }}
