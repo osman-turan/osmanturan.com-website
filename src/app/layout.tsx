@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
-import "./globals.css";
 import { Preconnect } from "@/components/Preconnect";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { PerformanceReport } from "@/components/PerformanceReport";
+import { StyledComponentsRegistry } from "@/components/StyledComponentsRegistry";
 
 const PRECONNECT_URLS = ["https://www.google-analytics.com"];
 
@@ -24,7 +24,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         ))}
       </head>
       <body>
-        <>{children}</>
+        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
         <GoogleAnalytics />
         <PerformanceReport />
       </body>

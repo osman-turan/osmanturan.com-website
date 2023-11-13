@@ -22,9 +22,11 @@
   "homepage": "https://github.com/osman-turan/osmanturan.com-website#readme",
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "classnames": "^2.3.2",
     "next": "14.0.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "styled-components": "^6.1.1"
   },
   "devDependencies": {
     "@types/node": "^20",
