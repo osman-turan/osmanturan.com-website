@@ -1,5 +1,7 @@
-[context.deploy-preview.environment]
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
+[build]
+  command = "yarn build"
+  publish = "out/"
 
-[context.production.environment]
+[build.environment]
+  NODE_VERSION = "18.18.2"
   NETLIFY_NEXT_PLUGIN_SKIP = "true"
