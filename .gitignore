@@ -106,3 +106,6 @@ next-env.d.ts
 # .pnp.*
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,nextjs,visualstudiocode,yarn
+
+# Local Netlify folder
+.netlify
