@@ -1,7 +1,6 @@
 [build]
   command = "yarn build"
-  publish = "out/"
+  publish = ".next/"
 
 [build.environment]
   NODE_VERSION = "18.18.2"
-  NETLIFY_NEXT_PLUGIN_SKIP = "true"
