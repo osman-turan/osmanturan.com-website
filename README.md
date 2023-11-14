@@ -33,8 +33,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 There are 2 deployment environments:
 
-- **Development:** Deployments are tracked with `develop` branch. All pull-requests should be created against this branch. After a successful build, an auto generated preview address will be provided for your pull-request.
-- **Production:** Deployments are tracked with `master` branch. You shouldn't create pull-requests against this branch. Only successful branches which are merged into `develop` branch will be merged into `master` branch and eventually deployed into [production environment](http://osmanturan.com/).
+- **[Development](http://osmanturan.vercel.app/):** Deployments are tracked with `develop` branch. All pull-requests should be created against this branch. After a successful build, an auto generated preview address will be provided for your pull-request.
+- **[Production](http://osmanturan.com/):** Deployments are tracked with `master` branch. You shouldn't create pull-requests against this branch. Only successful branches which are merged into `develop` branch will be merged into `master` branch and eventually deployed into [production environment](http://osmanturan.com/).
 
 ## Contributing
 
