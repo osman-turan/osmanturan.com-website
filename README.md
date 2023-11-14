@@ -1,8 +1,6 @@
 # osmanturan.com-website
 
-[![wercker status](https://app.wercker.com/status/6c4288f68ab606b409ead7303b951382/s/ "wercker status")](https://app.wercker.com/project/byKey/6c4288f68ab606b409ead7303b951382)
-
-Website for [osmanturan.com](https://osmanturan.com) which is built with [Next.js](https://nextjs.org/) and deployed with [Netlify](https://www.netlify.com/) + [Wercker](https://app.wercker.com/).
+Website for [osmanturan.com](https://osmanturan.com) which is built with [Next.js](https://nextjs.org/) and deployed with [Vercel](https://vercel.com/).
 
 ## Prerequisites
 
@@ -35,8 +33,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 There are 2 deployment environments:
 
-- **Development:** [Netlify](https://www.netlify.com/) backed deployments are tracked with `develop` branch. All pull-requests should be created against this branch. After a successful build, an auto generated preview address will be provided for your pull-request.
-- **Production:** [Wercker](https://app.wercker.com/) backed deployments are tracked with `master` branch. You shouldn't create pull-requests against this branch. Only successful branches which are merged into `develop` branch will be merged into `master` branch and eventually deployed into [production environment](http://osmanturan.com/).
+- **Development:** Deployments are tracked with `develop` branch. All pull-requests should be created against this branch. After a successful build, an auto generated preview address will be provided for your pull-request.
+- **Production:** Deployments are tracked with `master` branch. You shouldn't create pull-requests against this branch. Only successful branches which are merged into `develop` branch will be merged into `master` branch and eventually deployed into [production environment](http://osmanturan.com/).
 
 ## Contributing
 
