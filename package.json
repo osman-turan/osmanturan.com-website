@@ -21,12 +21,12 @@
   },
   "homepage": "https://github.com/osman-turan/osmanturan.com-website#readme",
   "dependencies": {
-    "bootstrap": "^4.4.1",
-    "classnames": "^2.3.2",
+    "bootstrap": "^5.3.3",
+    "classnames": "^2.5.1",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "styled-components": "^6.1.1"
+    "styled-components": "^6.1.13"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -35,5 +35,8 @@
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "typescript": "^5"
+  },
+  "resolutions": {
+    "styled-components": "^6"
   }
 }
