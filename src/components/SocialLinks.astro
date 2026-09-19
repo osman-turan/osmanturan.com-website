@@ -1,0 +1,53 @@
+---
+import s from "./SocialLinks.module.css";
+import TwitterIcon from "./icons/TwitterIcon.astro";
+import GitHubIcon from "./icons/GitHubIcon.astro";
+import CodepenIcon from "./icons/CodepenIcon.astro";
+import LinkedinIcon from "./icons/LinkedinIcon.astro";
+import InstagramIcon from "./icons/InstagramIcon.astro";
+import StackOverflowIcon from "./icons/StackOverflowIcon.astro";
+import HackerRankIcon from "./icons/HackerRankIcon.astro";
+
+const SOCIAL_MEDIA_INFO_LIST = [
+  {
+    name: "Twitter",
+    url: "https://twitter.com/theosmanturan",
+    Icon: TwitterIcon,
+  },
+  { name: "GitHub", url: "https://github.com/osman-turan", Icon: GitHubIcon },
+  { name: "Codepen", url: "https://codepen.io/osmanturan", Icon: CodepenIcon },
+  {
+    name: "Linkedin",
+    url: "https://www.linkedin.com/in/osman-turan-360043a8/",
+    Icon: LinkedinIcon,
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/theosmanturan/",
+    Icon: InstagramIcon,
+  },
+  {
+    name: "Stack Overflow",
+    url: "https://stackoverflow.com/users/1113866/osman-turan",
+    Icon: StackOverflowIcon,
+  },
+  {
+    name: "HackerRank",
+    url: "https://www.hackerrank.com/osmanturan",
+    Icon: HackerRankIcon,
+  },
+];
+---
+
+<ul class={s.list}>
+  {
+    SOCIAL_MEDIA_INFO_LIST.map(({ name, url, Icon }) => (
+      <li class={s.item}>
+        <a href={url} target="_blank" rel="noopener noreferrer">
+          <Icon class={s.icon} />
+          <span>{name}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>

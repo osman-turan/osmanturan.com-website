@@ -1,0 +1,13 @@
+---
+import { Image } from "astro:assets";
+import osman from "@/assets/osman.png";
+import s from "./Avatar.module.css";
+---
+
+<Image
+  class={s.avatar}
+  src={osman}
+  alt="avatar"
+  loading="eager"
+  fetchpriority="high"
+/>

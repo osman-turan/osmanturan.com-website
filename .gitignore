@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,nextjs,visualstudiocode,yarn
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,nextjs,visualstudiocode,yarn
+# Created by https://www.toptal.com/developers/gitignore/api/macos,node,visualstudiocode,yarn
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,node,visualstudiocode,yarn
 
 ### macOS ###
 # General
@@ -34,21 +34,16 @@ Temporary Items
 # iCloud generated files
 *.icloud
 
-### NextJS ###
+### Astro ###
 # dependencies
 /node_modules
-/.pnp
-.pnp.js
+
+# build output
+dist/
+.astro/
 
 # testing
 /coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
 
 # misc
 *.pem
@@ -67,7 +62,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts
 
 ### VisualStudioCode ###
 .vscode/*
@@ -92,17 +86,12 @@ next-env.d.ts
 # https://yarnpkg.com/getting-started/qa#which-files-should-be-gitignored
 
 .yarn/*
-!.yarn/releases
 !.yarn/patches
 !.yarn/plugins
-!.yarn/sdks
+!.yarn/releases
 !.yarn/versions
 
-# if you are NOT using Zero-installs, then:
-# comment the following lines
-!.yarn/cache
+# Not using Zero-installs or PnP (nodeLinker: node-modules).
+.pnp.*
 
-# and uncomment the following lines
-# .pnp.*
-
-# End of https://www.toptal.com/developers/gitignore/api/macos,nextjs,visualstudiocode,yarn
+# End of https://www.toptal.com/developers/gitignore/api/macos,node,visualstudiocode,yarn

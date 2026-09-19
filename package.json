@@ -1,14 +1,20 @@
 {
   "name": "osmanturan.com-website",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Website for osmanturan.com",
   "private": true,
+  "type": "module",
   "packageManager": "yarn@4.5.2",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "sync": "astro sync",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -21,22 +27,15 @@
   },
   "homepage": "https://github.com/osman-turan/osmanturan.com-website#readme",
   "dependencies": {
-    "bootstrap": "^5.3.3",
-    "classnames": "^2.5.1",
-    "next": "15.0.3",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
-    "styled-components": "^6.1.13"
+    "astro": "^7.3.3",
+    "sharp": "^0.34.0"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "15.0.3",
-    "typescript": "^5"
-  },
-  "resolutions": {
-    "styled-components": "^6"
+    "@astrojs/check": "^0.9.10",
+    "@emnapi/runtime": "^1.11.3",
+    "@types/node": "^24",
+    "prettier": "^3.6.0",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.0"
   }
 }

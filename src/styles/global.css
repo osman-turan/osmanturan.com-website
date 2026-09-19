@@ -1,0 +1,74 @@
+/*
+ * Replaces bootstrap-reboot.css and the createGlobalStyle block that lived in
+ * StyledComponentsRegistry. Step 2 replaces these tokens with the warm-paper
+ * light/dark set; for now they are carried over verbatim so the port is
+ * visually identical.
+ */
+
+:root {
+  --primary-color: #293133;
+  --header-gradient-start: #070809; /* darken(--primary-color, 15%) */
+  --header-gradient-end: #4b5a5d; /* lighten(--primary-color, 15%) */
+
+  --dark-text-primary-color: rgba(0, 0, 0, 0.87);
+  --dark-text-secondary-color: rgba(0, 0, 0, 0.7);
+
+  /* The Bootstrap container/row/col gutter the old grid used. */
+  --gutter: 0.75rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #fff;
+  color: var(--dark-text-primary-color);
+  font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.02em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-block: 0 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+p {
+  margin-block: 0 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  vertical-align: middle;
+}

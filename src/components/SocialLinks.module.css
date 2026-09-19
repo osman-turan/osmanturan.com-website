@@ -1,0 +1,27 @@
+/* Reproduces the Bootstrap .row / .col grid the styled-components version used. */
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 calc(var(--gutter) * -1);
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  flex: 1 0 0%;
+  padding: 0 var(--gutter);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.item > a {
+  display: inline-block;
+}
+
+.icon {
+  display: block;
+  margin: 0 auto 8px auto;
+  width: 48px;
+  height: 48px;
+}
