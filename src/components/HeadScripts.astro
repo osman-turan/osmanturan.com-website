@@ -1,0 +1,34 @@
+---
+/*
+ * Runs before first paint. `is:inline` is required: a bundled module script
+ * is deferred until after the document parses, which is late enough to show
+ * a flash of the wrong theme. It must stay inline and inside <head>.
+ *
+ * Attributes it writes:
+ *   data-theme       only when a theme is pinned, so `light-dark()` resolves
+ *                    against the stored choice instead of the OS.
+ *   data-theme-pref  always, including "auto", so the toggle renders the
+ *                    correct icon on the first frame.
+ *   data-js          reveals the toggle only where it can work.
+ *
+ * Reading localStorage throws in Safari private mode rather than returning
+ * null, hence the try/catch.
+ *
+ * Astro ships an `is:inline` script unprocessed, so comments inside it reach
+ * every visitor. Keep explanations in this block.
+ */
+---
+
+<script is:inline>
+  (function () {
+    var el = document.documentElement;
+    var theme = null;
+    el.dataset.js = "";
+    try {
+      theme = localStorage.getItem("theme");
+    } catch (err) {}
+    if (theme !== "light" && theme !== "dark") theme = null;
+    el.dataset.themePref = theme || "auto";
+    if (theme) el.dataset.theme = theme;
+  })();
+</script>

@@ -1,0 +1,86 @@
+---
+import s from "./ThemeToggle.module.css";
+
+/*
+ * Vanilla rather than an island: HeadScripts writes data-theme-pref before
+ * this markup is parsed, so CSS alone selects the correct icon on the first
+ * frame and there is nothing to hydrate.
+ *
+ * The handler below ships unprocessed, so its notes are here:
+ *   - "auto" removes data-theme rather than storing a third value, handing
+ *     control back to `color-scheme: light dark`.
+ *   - indexOf returns -1 for a missing attribute, so the cycle starts at
+ *     "auto".
+ *   - localStorage throws in Safari private mode; on failure the only loss
+ *     is that the choice does not survive a reload.
+ */
+---
+
+<button id="theme-toggle" class={s.button} type="button" aria-label="Theme">
+  <svg
+    class={`${s.icon} ${s.iconAuto}`}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="9"></circle>
+    <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none"></path>
+  </svg>
+  <svg
+    class={`${s.icon} ${s.iconLight}`}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4"></circle>
+    <path
+      d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"
+    ></path>
+  </svg>
+  <svg
+    class={`${s.icon} ${s.iconDark}`}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<script is:inline>
+  (function () {
+    var el = document.documentElement;
+    var button = document.getElementById("theme-toggle");
+    var order = ["auto", "light", "dark"];
+
+    function setLabel(pref) {
+      var text = "Theme: " + (pref === "auto" ? "system" : pref);
+      button.setAttribute("aria-label", text);
+      button.setAttribute("title", text);
+    }
+
+    function apply(pref) {
+      el.dataset.themePref = pref;
+      try {
+        if (pref === "auto") localStorage.removeItem("theme");
+        else localStorage.setItem("theme", pref);
+      } catch (err) {}
+      if (pref === "auto") delete el.dataset.theme;
+      else el.dataset.theme = pref;
+      setLabel(pref);
+    }
+
+    setLabel(el.dataset.themePref);
+    button.addEventListener("click", function () {
+      apply(order[(order.indexOf(el.dataset.themePref) + 1) % order.length]);
+    });
+  })();
+</script>

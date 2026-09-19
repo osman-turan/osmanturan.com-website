@@ -1,0 +1,68 @@
+/*
+ * Layout primitives shared across pages, pulled in with CSS Modules
+ * `composes:`. The `@` alias that makes `composes: ... from "@/styles/..."`
+ * resolve is declared in astro.config.mjs -- Vite does not apply tsconfig
+ * paths inside CSS.
+ */
+
+/* Horizontal rail every page sits on. */
+.container {
+  width: 100%;
+  max-width: var(--layout-content);
+  margin-inline: auto;
+  padding-inline: var(--layout-gutter);
+}
+
+/* A top-level page section: the rail plus vertical rhythm. */
+.section {
+  composes: container;
+  margin-block: 3.5rem;
+}
+
+/* The header and footer bands: the rail, with its contents pushed apart. */
+.bar {
+  composes: container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+}
+
+/* Small tracked-out heading used to label sections. */
+.sectionLabel {
+  margin-block-end: 1rem;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/*
+ * A bordered control that tints to the accent on hover. Sets no background
+ * or box metrics: callers differ on both, and omitting them keeps a caller's
+ * own rules out of a specificity fight with this one.
+ */
+.pill {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  color: var(--color-muted);
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.pill:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.prose {
+  max-width: var(--layout-measure);
+  color: var(--color-muted);
+}
+
+.prose > * + * {
+  margin-block-start: 1rem;
+}

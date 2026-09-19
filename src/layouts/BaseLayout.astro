@@ -1,11 +1,23 @@
 ---
+import notoSansLatin from "@/assets/fonts/noto-sans-latin.woff2?url";
+import osman from "@/assets/osman.png";
+import HeadScripts from "@/components/HeadScripts.astro";
+import SiteHeader from "@/components/SiteHeader.astro";
+import SiteFooter from "@/components/SiteFooter.astro";
 import "@/styles/global.css";
 
 interface Props {
   title: string;
+  description: string;
+  /** Keep this page out of search results. */
+  noindex?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+// Social scrapers are less consistent about WebP than browsers are, so this
+// points at the source PNG rather than the optimised avatar.
+const ogImage = new URL(osman.src, Astro.site);
 ---
 
 <!doctype html>
@@ -13,10 +25,37 @@ const { title } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="generator" content={Astro.generator} />
+    <HeadScripts />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Osman Turan" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="generator" content={Astro.generator} />
+    {
+      /* Only the latin slice is preloaded. latin-ext is gated behind a
+        `unicode-range` no current page hits, so preloading it would cost every
+        visitor a second font download for nothing. */
+    }
+    <link
+      rel="preload"
+      href={notoSansLatin}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
   </head>
   <body>
-    <slot />
+    <SiteHeader />
+    <main>
+      <slot />
+    </main>
+    <SiteFooter />
   </body>
 </html>

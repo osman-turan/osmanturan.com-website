@@ -1,9 +1,10 @@
+/* The source image is 250x240, so 128px is the largest square this can be
+   drawn at without upscaling on a 2x display. */
 .avatar {
-  margin: 0 auto;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
-  border: 1px solid var(--primary-color);
-  width: 150px;
-  height: 150px;
-  background-color: var(--primary-color);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
   object-fit: cover;
 }

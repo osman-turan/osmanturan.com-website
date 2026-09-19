@@ -1,101 +1,18 @@
-/*
- * Provisional: .header/.profile/.bio/.section are layout primitives living
- * in a page-scoped module because this is the only page. Step 2 moves them
- * into src/styles/shared.module.css alongside the redesign.
- */
-.header {
-  background: linear-gradient(
-    to bottom,
-    var(--header-gradient-start) 0%,
-    var(--header-gradient-end) 100%
-  );
-  width: 100%;
-  height: 100px;
-  margin-bottom: -75px;
-}
-
-@media (min-width: 576px) {
-  .header {
-    height: 150px;
-  }
-}
-
-@media (min-width: 768px) {
-  .header {
-    height: 200px;
-  }
-}
-
-@media (min-width: 992px) {
-  .header {
-    height: 260px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .header {
-    height: 320px;
-  }
-}
-
-.profile {
+.hero {
+  composes: container from "@/styles/shared.module.css";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-block: 3rem 0;
   text-align: center;
 }
 
-.bio {
-  padding-top: 15px;
+.hero h1 {
+  margin: 0;
 }
 
-.bio h1 {
-  line-height: 1;
-  margin-bottom: 15px;
-}
-
-.bio p {
-  color: var(--dark-text-secondary-color);
-}
-
-/* Reproduces the Bootstrap .container the styled-components Section used. */
-.section {
-  width: 100%;
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-  text-align: center;
-  margin-top: 60px;
-  margin-bottom: 60px;
-}
-
-.section h2 {
-  color: var(--dark-text-secondary-color);
-  margin-bottom: 30px;
-}
-
-@media (min-width: 576px) {
-  .section {
-    max-width: 540px;
-  }
-}
-
-@media (min-width: 768px) {
-  .section {
-    max-width: 720px;
-  }
-}
-
-@media (min-width: 992px) {
-  .section {
-    max-width: 960px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .section {
-    max-width: 1140px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .section {
-    max-width: 1320px;
-  }
+.role {
+  color: var(--color-muted);
+  font-size: 0.9375rem;
 }

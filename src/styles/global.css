@@ -1,20 +1,87 @@
 /*
- * Replaces bootstrap-reboot.css and the createGlobalStyle block that lived in
- * StyledComponentsRegistry. Step 2 replaces these tokens with the warm-paper
- * light/dark set; for now they are carried over verbatim so the port is
- * visually identical.
+ * Design tokens, reset and base typography.
+ *
+ * The whole theme is `color-scheme` plus `light-dark()`: every token below
+ * resolves against the *computed* `color-scheme`, not `prefers-color-scheme`,
+ * so flipping `color-scheme` on :root re-resolves all of them at once. Native
+ * scrollbars, form controls and the caret follow along for free -- there is no
+ * second set of overrides anywhere in the codebase.
  */
 
+/*
+ * Noto Sans, self-hosted. Google's variable subset slices, committed to the
+ * repository rather than fetched at build time by Astro's Fonts API, which
+ * treats a failed download as a warning and would deploy the site with no
+ * webfont. See README "Fonts" for how to update these files.
+ *
+ * The slices come from a `wght@400..700` request, which returns weight-axis
+ * only, so the width axis of Noto's variable build is never downloaded.
+ * Licensed under the SIL Open Font License 1.1.
+ */
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../assets/fonts/noto-sans-latin.woff2") format("woff2");
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+/*
+ * Turkish needs g-breve, s-cedilla and dotted-I, which live here rather than
+ * in the latin slice. `unicode-range` means the browser downloads this file
+ * only on a page that actually contains one of these codepoints -- today,
+ * none do, so it costs visitors nothing.
+ */
+@font-face {
+  font-family: "Noto Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../assets/fonts/noto-sans-latin-ext.woff2") format("woff2");
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB,
+    U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 :root {
-  --primary-color: #293133;
-  --header-gradient-start: #070809; /* darken(--primary-color, 15%) */
-  --header-gradient-end: #4b5a5d; /* lighten(--primary-color, 15%) */
+  /* `light dark` means "follow the OS"; [data-theme] below pins it. */
+  color-scheme: light dark;
 
-  --dark-text-primary-color: rgba(0, 0, 0, 0.87);
-  --dark-text-secondary-color: rgba(0, 0, 0, 0.7);
+  /* Graphite and teal. The neutrals carry no hue at all, so the accent is
+     the only chroma on the page -- links are the one thing that reads as
+     coloured, and syntax-highlighted code (step 3 onward) sits on a ground
+     that does not fight it. */
+  --color-bg: light-dark(#fafafa, #101314);
+  --color-surface: light-dark(#f0f1f1, #191d1e);
+  --color-border: light-dark(#dbdedd, #272c2e);
+  --color-text: light-dark(#16191a, #e7eaea);
+  --color-muted: light-dark(#575e60, #98a1a2);
+  --color-accent: light-dark(#0c6169, #4bbcb2);
 
-  /* The Bootstrap container/row/col gutter the old grid used. */
-  --gutter: 0.75rem;
+  /* Page rails. --layout-measure keeps prose near 65-70 characters. */
+  --layout-gutter: 1.25rem;
+  --layout-content: 44rem;
+  --layout-measure: 36rem;
+
+  --radius-base: 0.75rem;
+  --radius-pill: 999px;
+
+  --transition-fast: 0.15s ease;
+
+  --font-sans: "Noto Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 *,
@@ -29,38 +96,43 @@ html {
 
 body {
   margin: 0;
-  background-color: #fff;
-  color: var(--dark-text-primary-color);
-  font-family: "Helvetica Neue", "Calibri Light", Roboto, sans-serif;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
   font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  letter-spacing: 0.02em;
 }
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-block: 0 0.5rem;
-  font-weight: 500;
+h3 {
+  margin-block: 0;
+  font-weight: 600;
   line-height: 1.2;
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: clamp(1.875rem, 1.5rem + 1.8vw, 2.5rem);
+  letter-spacing: -0.015em;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.25rem;
 }
 
 p {
-  margin-block: 0 1rem;
+  margin-block: 0;
+  text-wrap: pretty;
+}
+
+ul {
+  margin-block: 0;
 }
 
 a {
@@ -71,4 +143,23 @@ a {
 img,
 svg {
   vertical-align: middle;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }

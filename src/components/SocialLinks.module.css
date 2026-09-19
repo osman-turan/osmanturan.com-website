@@ -1,27 +1,23 @@
-/* Reproduces the Bootstrap .row / .col grid the styled-components version used. */
 .list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 calc(var(--gutter) * -1);
+  gap: 0.5rem;
   padding: 0;
   list-style: none;
 }
 
-.item {
-  flex: 1 0 0%;
-  padding: 0 var(--gutter);
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.item > a {
-  display: inline-block;
+.link {
+  composes: pill from "@/styles/shared.module.css";
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4375rem 0.875rem;
+  background-color: var(--color-surface);
+  font-size: 0.875rem;
 }
 
 .icon {
-  display: block;
-  margin: 0 auto 8px auto;
-  width: 48px;
-  height: 48px;
+  flex: none;
+  width: 1rem;
+  height: 1rem;
 }

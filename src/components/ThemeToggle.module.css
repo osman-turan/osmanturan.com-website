@@ -1,0 +1,27 @@
+.button {
+  composes: pill from "@/styles/shared.module.css";
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Without scripting the button cannot do anything, so do not offer it. */
+html:not([data-js]) .button {
+  display: none;
+}
+
+.icon {
+  display: none;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+html[data-theme-pref="auto"] .iconAuto,
+html[data-theme-pref="light"] .iconLight,
+html[data-theme-pref="dark"] .iconDark {
+  display: block;
+}

@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import shared from "@/styles/shared.module.css";
+import s from "./404.module.css";
+---
+
+<BaseLayout
+  title="Page not found — Osman Turan"
+  description="That page does not exist."
+  noindex
+>
+  <section class={`${shared.section} ${s.notFound}`}>
+    <h1>404</h1>
+    <p class={s.message}>
+      That page does not exist, or it moved somewhere else.
+    </p>
+    <a class={s.link} href="/">Back to the home page</a>
+  </section>
+</BaseLayout>

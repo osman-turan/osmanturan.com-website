@@ -58,7 +58,7 @@ project. It exists to satisfy a missing peer dependency upstream:
 `@astrojs/astro2tsx` (pulled in by `@astrojs/check`) depends on
 `@napi-rs/wasm-runtime`, which declares both `@emnapi/core` and
 `@emnapi/runtime` as non-optional peers — but `astro2tsx` only supplies
-`@emnapi/core`. Every package that *does* declare `@emnapi/runtime` is gated on
+`@emnapi/core`. Every package that _does_ declare `@emnapi/runtime` is gated on
 `cpu=wasm32`, so it never installs on a normal platform.
 
 Without it, importing `@astrojs/check` throws `ERR_MODULE_NOT_FOUND`, Astro's
@@ -66,6 +66,39 @@ CLI swallows that error, and `astro check` reports the misleading
 "@astrojs/check is not installed" — which fails `yarn build`.
 
 Remove it once `@astrojs/astro2tsx` declares the peer correctly.
+
+### Fonts
+
+Noto Sans is self-hosted. `src/assets/fonts/*.woff2` are Google's variable
+subset slices, committed to the repository, with the `@font-face` rules
+written by hand in `src/styles/global.css`.
+
+Astro's Fonts API fetches them at build time instead, but it treats a failed
+download as a warning rather than an error, so a network problem during a
+Vercel build produces a successful deploy with no webfont. Committed files
+keep the build offline and reproducible.
+
+To update them, read the URLs out of the Google Fonts CSS and re-download.
+A browser user agent is required; `curl`'s default gets a TTF-only response.
+
+```bash
+curl -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) \
+  AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+  "https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400..700"
+```
+
+The `unicode-range` values in `global.css` must match that response. The
+`wght@400..700` request returns weight-axis-only files, which is why the
+width axis of Noto's variable build is never downloaded.
+
+Noto Sans is licensed under the SIL Open Font License 1.1 (`OFL.txt`).
+
+### PostCSS `from` warning
+
+`yarn build` prints "A PostCSS plugin did not pass the `from` option to
+`postcss.parse`". It originates in Vite's CSS Modules handling of `composes:`
+and is cosmetic: asset URLs inside the composed stylesheets are still
+rewritten and fingerprinted correctly.
 
 ## Contributing
 

@@ -2,38 +2,48 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Avatar from "@/components/Avatar.astro";
 import SocialLinks from "@/components/SocialLinks.astro";
+import shared from "@/styles/shared.module.css";
 import s from "./index.module.css";
 
 const CODING_START_YEAR = 1996;
 const codingYears = new Date().getUTCFullYear() - CODING_START_YEAR;
 ---
 
-<BaseLayout title="Osman Turan">
-  <div class={s.header}></div>
-
-  <div class={s.profile}>
+<BaseLayout
+  title="Osman Turan"
+  description="Osman Turan is a full stack software developer and electrical-electronics engineer, working everywhere from kernel internals to single-page web applications."
+>
+  <section class={s.hero}>
     <Avatar />
-    <div class={s.bio}>
-      <h1>Osman Turan</h1>
-      <p>Software Developer, Electrical-Electronics Engineer</p>
-    </div>
-  </div>
-
-  <section class={s.section}>
-    <h2>About</h2>
-    <p>
-      Coding over {codingYears} years since age 11. Full stack developer with engineering
-      background with thorough hands-on experience from low-level kernel programming
-      to single-page web applications, socket-level networking to computer generated
-      graphics, desktop applications to distributed systems with help of Agile methodologies
-      and full lifecycle management. Enjoys automating some mundane tasks - including
-      playing video games! Loves to optimize his algorithms with Genetic Algorithms.
-      Reverse-engineering is his last trump card for undocumented behaviors and APIs.
+    <h1>Osman Turan</h1>
+    <p class={s.role}>
+      Software Developer &middot; Electrical-Electronics Engineer
     </p>
   </section>
 
-  <section class={s.section}>
-    <h2>Contact</h2>
+  <section class={shared.section} aria-labelledby="about">
+    <h2 id="about" class={shared.sectionLabel}>About</h2>
+    <div class={shared.prose}>
+      <p>
+        Coding over {codingYears} years since age 11. Full stack developer with engineering
+        background with thorough hands-on experience from low-level kernel programming
+        to single-page web applications, socket-level networking to computer generated
+        graphics, desktop applications to distributed systems with help of Agile methodologies
+        and full lifecycle management.
+      </p>
+      <p>
+        Enjoys automating some mundane tasks &mdash; including playing video
+        games! Loves to optimize his algorithms with Genetic Algorithms.
+      </p>
+      <p>
+        Reverse-engineering is his last trump card for undocumented behaviors
+        and APIs.
+      </p>
+    </div>
+  </section>
+
+  <section class={shared.section} aria-labelledby="contact">
+    <h2 id="contact" class={shared.sectionLabel}>Contact</h2>
     <SocialLinks />
   </section>
 </BaseLayout>

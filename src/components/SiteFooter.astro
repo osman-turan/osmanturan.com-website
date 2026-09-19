@@ -1,0 +1,20 @@
+---
+import shared from "@/styles/shared.module.css";
+import s from "./SiteFooter.module.css";
+
+const year = new Date().getUTCFullYear();
+---
+
+<footer class={s.footer}>
+  <div class={shared.bar}>
+    <p>&copy; {year} Osman Turan</p>
+    <p>
+      <a
+        class={s.link}
+        href="https://github.com/osman-turan/osmanturan.com-website"
+        target="_blank"
+        rel="noopener noreferrer">Source</a
+      >
+    </p>
+  </div>
+</footer>

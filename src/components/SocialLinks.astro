@@ -9,32 +9,32 @@ import StackOverflowIcon from "./icons/StackOverflowIcon.astro";
 import HackerRankIcon from "./icons/HackerRankIcon.astro";
 
 const SOCIAL_MEDIA_INFO_LIST = [
-  {
-    name: "Twitter",
-    url: "https://twitter.com/theosmanturan",
-    Icon: TwitterIcon,
-  },
   { name: "GitHub", url: "https://github.com/osman-turan", Icon: GitHubIcon },
-  { name: "Codepen", url: "https://codepen.io/osmanturan", Icon: CodepenIcon },
-  {
-    name: "Linkedin",
-    url: "https://www.linkedin.com/in/osman-turan-360043a8/",
-    Icon: LinkedinIcon,
-  },
-  {
-    name: "Instagram",
-    url: "https://www.instagram.com/theosmanturan/",
-    Icon: InstagramIcon,
-  },
   {
     name: "Stack Overflow",
     url: "https://stackoverflow.com/users/1113866/osman-turan",
     Icon: StackOverflowIcon,
   },
   {
+    name: "Linkedin",
+    url: "https://www.linkedin.com/in/osman-turan-360043a8/",
+    Icon: LinkedinIcon,
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/theosmanturan",
+    Icon: TwitterIcon,
+  },
+  { name: "Codepen", url: "https://codepen.io/osmanturan", Icon: CodepenIcon },
+  {
     name: "HackerRank",
     url: "https://www.hackerrank.com/osmanturan",
     Icon: HackerRankIcon,
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/theosmanturan/",
+    Icon: InstagramIcon,
   },
 ];
 ---
@@ -42,8 +42,13 @@ const SOCIAL_MEDIA_INFO_LIST = [
 <ul class={s.list}>
   {
     SOCIAL_MEDIA_INFO_LIST.map(({ name, url, Icon }) => (
-      <li class={s.item}>
-        <a href={url} target="_blank" rel="noopener noreferrer">
+      <li>
+        <a
+          class={s.link}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer me"
+        >
           <Icon class={s.icon} />
           <span>{name}</span>
         </a>

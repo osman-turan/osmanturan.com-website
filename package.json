@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/osman-turan/osmanturan.com-website#readme",
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.0",
     "astro": "^7.3.3",
     "sharp": "^0.34.0"
   },
